@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
+
+# set -euo pipefail
+# IFS=$'\n\t'
 
 input_dir="/home/gem-404/transcriptions"
 
@@ -20,7 +21,7 @@ for input_file in "$input_dir"/*.mp3; do
         num_chunks=$(echo "($total_minutes + 4) / 5" | bc)
 
         # Split the audio into chunks
-        for ((i = 0; i < $num_chunks; i++)); do
+        for ((i = 0; i < num_chunks; i++)); do
             start_time=$(echo "$i * 5 * 60" | bc)
             duration=300
             suffix=$((i + 1))
